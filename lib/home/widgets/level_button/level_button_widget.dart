@@ -1,40 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:dev_quiz/core/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:dev_quiz/shared/enums/level_enum.dart';
 
 class LevelButtonWidget extends StatelessWidget {
-  final String label;
+  final Level level;
 
-  LevelButtonWidget({Key? key, required this.label})
-      : assert(["Fácil", "Médio", "Difícil", "Perito"].contains(label)),
-        super(key: key);
+  LevelButtonWidget({Key? key, required this.level}) : super(key: key);
 
   final config = {
-    "Fácil": {
+    Level.facil: {
       "color": AppColors.levelButtonFacil,
       "borderColor": AppColors.levelButtonBorderFacil,
       "fontColor": AppColors.levelButtonTextFacil,
     },
-    "Médio": {
+    Level.medio: {
       "color": AppColors.levelButtonMedio,
       "borderColor": AppColors.levelButtonBorderMedio,
       "fontColor": AppColors.levelButtonTextMedio,
     },
-    "Difícil": {
+    Level.dificil: {
       "color": AppColors.levelButtonDificil,
       "borderColor": AppColors.levelButtonBorderDificil,
       "fontColor": AppColors.levelButtonTextDificil,
     },
-    "Perito": {
+    Level.perito: {
       "color": AppColors.levelButtonPerito,
       "borderColor": AppColors.levelButtonBorderPerito,
       "fontColor": AppColors.levelButtonTextPerito,
     },
   };
 
-  Color get color => config[label]!['color']!;
-  Color get borderColor => config[label]!['borderColor']!;
-  Color get fontColor => config[label]!['fontColor']!;
+  Color get color => config[level]!['color']!;
+  Color get borderColor => config[level]!['borderColor']!;
+  Color get fontColor => config[level]!['fontColor']!;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +46,7 @@ class LevelButtonWidget extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
-        child: Text(label,
+        child: Text(level.label,
             style: GoogleFonts.notoSans(
               color: fontColor,
               fontSize: 13,

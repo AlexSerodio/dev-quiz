@@ -5,7 +5,16 @@ import 'package:dev_quiz/core/app_images.dart';
 import 'package:dev_quiz/shared/widgets/progress_indicator/progress_indicator_widget.dart';
 
 class QuizCardWidget extends StatelessWidget {
-  const QuizCardWidget({Key? key}) : super(key: key);
+  final String title;
+  final int answeredQuestionsAmount;
+  final int totalQuestionsAmount;
+
+  const QuizCardWidget({
+    Key? key,
+    required this.title,
+    required this.answeredQuestionsAmount,
+    required this.totalQuestionsAmount,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,24 +33,30 @@ class QuizCardWidget extends StatelessWidget {
             width: 40,
             child: Image.asset(AppImages.blocks),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Text(
-            "Gerenciamento de Estado",
+            title,
             style: AppTextStyles.heading15,
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Row(
             children: [
               Expanded(
                 flex: 2,
                 child: Text(
-                  "3 de 10", 
+                  "$answeredQuestionsAmount de $totalQuestionsAmount",
                   style: AppTextStyles.body11,
                 ),
               ),
               Expanded(
                 flex: 3,
-                child: ProgressIndicatorWidget(value: .3,),
+                child: ProgressIndicatorWidget(
+                  value: answeredQuestionsAmount / totalQuestionsAmount,
+                ),
               ),
             ],
           )
