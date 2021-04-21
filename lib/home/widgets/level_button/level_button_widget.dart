@@ -9,22 +9,22 @@ class LevelButtonWidget extends StatelessWidget {
   LevelButtonWidget({Key? key, required this.level}) : super(key: key);
 
   final config = {
-    Level.facil: {
+    Level.easy: {
       "color": AppColors.levelButtonFacil,
       "borderColor": AppColors.levelButtonBorderFacil,
       "fontColor": AppColors.levelButtonTextFacil,
     },
-    Level.medio: {
+    Level.medium: {
       "color": AppColors.levelButtonMedio,
       "borderColor": AppColors.levelButtonBorderMedio,
       "fontColor": AppColors.levelButtonTextMedio,
     },
-    Level.dificil: {
+    Level.hard: {
       "color": AppColors.levelButtonDificil,
       "borderColor": AppColors.levelButtonBorderDificil,
       "fontColor": AppColors.levelButtonTextDificil,
     },
-    Level.perito: {
+    Level.expert: {
       "color": AppColors.levelButtonPerito,
       "borderColor": AppColors.levelButtonBorderPerito,
       "fontColor": AppColors.levelButtonTextPerito,

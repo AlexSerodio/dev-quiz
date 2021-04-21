@@ -54,16 +54,16 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   LevelButtonWidget(
-                    level: Level.facil,
+                    level: Level.easy,
                   ),
                   LevelButtonWidget(
-                    level: Level.medio,
+                    level: Level.medium,
                   ),
                   LevelButtonWidget(
-                    level: Level.dificil,
+                    level: Level.hard,
                   ),
                   LevelButtonWidget(
-                    level: Level.perito,
+                    level: Level.expert,
                   ),
                 ],
               ),
