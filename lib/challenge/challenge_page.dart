@@ -3,11 +3,18 @@ import 'package:dev_quiz/challenge/widgets/question_indicator/question_indicator
 import 'package:dev_quiz/challenge/widgets/quiz/quiz_widget.dart';
 import 'package:dev_quiz/challenge/widgets/next_button/next_button_widget.dart';
 import 'package:dev_quiz/shared/models/question_model.dart';
+import 'package:dev_quiz/result/result_page.dart';
 import 'challenge_controller.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<QuestionModel> questions;
-  ChallengePage({Key? key, required this.questions}) : super(key: key);
+  final String title;
+
+  ChallengePage({
+    Key? key,
+    required this.questions,
+    required this.title,
+  }) : super(key: key);
 
   @override
   _ChallengePageState createState() => _ChallengePageState();
@@ -31,6 +38,13 @@ class _ChallengePageState extends State<ChallengePage> {
         duration: Duration(milliseconds: 200),
         curve: Curves.linear,
       );
+  }
+
+  void onSelected(value) {
+    if (value) {
+      controller.rightAnswers++;
+    }
+    nextQuestion();
   }
 
   @override
@@ -61,7 +75,7 @@ class _ChallengePageState extends State<ChallengePage> {
         children: widget.questions
             .map((e) => QuizWidget(
                   question: e,
-                  onChange: nextQuestion,
+                  onSelected: onSelected,
                 ))
             .toList(),
       ),
@@ -86,7 +100,16 @@ class _ChallengePageState extends State<ChallengePage> {
                     child: NextButtonWidget.green(
                       label: "Concluir",
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ResultPage(
+                                      quizTitle: widget.title,
+                                      totalQuestionsAmount:
+                                          widget.questions.length,
+                                      totalRightAnswers:
+                                          controller.rightAnswers,
+                                    )));
                       },
                     ),
                   ),
