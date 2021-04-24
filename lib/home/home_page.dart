@@ -6,6 +6,7 @@ import 'package:dev_quiz/home/widgets/level_button/level_button_widget.dart';
 import 'package:dev_quiz/home/widgets/quiz_card/quiz_card_widget.dart';
 import 'package:dev_quiz/core/app_colors.dart';
 import 'package:dev_quiz/shared/enums/level_enum.dart';
+import 'package:dev_quiz/challenge/challenge_page.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -29,7 +30,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    if (controller.state == HomeState.loading || controller.state == HomeState.empty) {
+    if (controller.state == HomeState.loading ||
+        controller.state == HomeState.empty) {
       return Scaffold(
         body: Center(
           child: CircularProgressIndicator(
@@ -80,6 +82,14 @@ class _HomePageState extends State<HomePage> {
                             title: e.title,
                             answeredQuestionsAmount: e.questionsAnswered,
                             totalQuestionsAmount: e.questions.length,
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ChallengePage(
+                                            questions: e.questions,
+                                          )));
+                            },
                           ))
                       .toList(),
                 ),
