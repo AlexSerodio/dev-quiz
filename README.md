@@ -32,8 +32,7 @@ flutter run
 **IMPORTANT:** the app was tested only on the **Moto X4** device and therefore may not work properly on screens with different size.
 
 ### Some possibilities for improvement:
-
+- add unit tests;
 - filter quizzes in home page by difficulty level (the difficulty buttons has no utility at the moment);
 - connect with some database such as Firebase to store quizzes, questions and user info there instead of locally;
-- add unit tests;
 - make the app responsive for different screen sizes.
